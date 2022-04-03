@@ -1,6 +1,7 @@
 import 'package:flutter_walpaper_app/model/categories_model.dart';
 
 String apiKey = "563492ad6f91700001000001bc911e3933b6400792bdc6cb5bf3a6ba";
+
 List<CategorieModel> getCategories() {
   List<CategorieModel> categories = [];
   CategorieModel categorieModel = new CategorieModel();
