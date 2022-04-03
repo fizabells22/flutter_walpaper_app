@@ -24,7 +24,6 @@ class _SearchState extends State<Search> {
         Uri.parse(
             "https://api.pexels.com/v1/search?query=$query&per_page=15&page=1"),
         headers: {"Authorization": apiKey});
-
     // print(response.body.toString());
 
     Map<String, dynamic> jsonData = jsonDecode(response.body);
@@ -67,7 +66,7 @@ class _SearchState extends State<Search> {
                       child: TextField(
                         controller: searchController,
                         decoration: InputDecoration(
-                            hintText: "Search Wallpaper",
+                            hintText: "search wallpaper",
                             border: InputBorder.none),
                       ),
                     ),

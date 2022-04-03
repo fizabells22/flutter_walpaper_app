@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_walpaper_app/views/categorie.dart';
 import 'package:flutter_walpaper_app/widgets/widget.dart';
 import 'package:flutter_walpaper_app/data/data.dart';
 import 'package:flutter_walpaper_app/views/search.dart';
@@ -114,45 +115,51 @@ class _HomeState extends State<Home> {
 }
 
 class CategoriesTile extends StatelessWidget {
-  final String imgUrl, title;
+  String imgUrl, title;
 
   CategoriesTile({required this.imgUrl, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 4.0),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(imgUrl,
-                height: 50, width: 100, fit: BoxFit.cover),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Categorie(
+              categorieName: title.toLowerCase(),
+            ),
           ),
-          Container(
-            decoration: BoxDecoration(
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 4.0),
+        child: Stack(
+          children: [
+            ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              color: Colors.black26,
+              child: Image.network(imgUrl,
+                  height: 50, width: 100, fit: BoxFit.cover),
             ),
-            height: 50,
-            width: 100,
-            alignment: Alignment.center,
-            child: Text(
-              title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15),
-            ),
-          )
-        ],
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.black26,
+              ),
+              height: 50,
+              width: 100,
+              alignment: Alignment.center,
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
-}
-
-@override
-Widget build(BuildContext context) {
-  // TODO: implement build
-  throw UnimplementedError();
 }
